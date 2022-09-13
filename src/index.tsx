@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Server} from 'miragejs'
+import {createServer} from 'miragejs';
 import { App } from './App';
-import { createServer } from 'http';
 
-createServer({
+createServer ({
   routes() {
     this.namespace = 'api';
 
-    this.get('/transactions'), () => {
+    this.get('/transactions', () => {
       return [
         {
           id: 1,
@@ -18,7 +17,7 @@ createServer({
           createdAt: new Date()
         }
       ]
-    }
+    })
   }
 })
 
